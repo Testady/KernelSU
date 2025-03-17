@@ -82,7 +82,8 @@ curl -LSs "https://raw.githubusercontent.com/ShirkNeko/KernelSU/main/kernel/setu
 - 除 `kernel` 目录外，所有其他部分均为 [GPL-3.0 或更高版本](https://www.gnu.org/licenses/gpl-3.0.html)。
 
 ## 赞助名单
-- [Ktouls](https://github.com/Ktouls)非常感谢给我带来的支持
+- [Ktouls](https://github.com/Ktouls) 非常感谢你给我带来的支持
+- [zaoqi123](https://github.com/zaoqi123) 请我喝奶茶也不错
 
 
 

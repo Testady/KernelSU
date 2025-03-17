@@ -81,7 +81,8 @@ Note: You only need to fill in the first two kernel versions, such as 5.10, 5.15
 - All other parts except the “kernel” directory are [GPL-3.0 or later](https://www.gnu.org/licenses/gpl-3.0.html).
 
 ## Sponsorship list
-- [Ktouls](https://github.com/Ktouls) Thanks so much for bringing me support!
+- [Ktouls](https://github.com/Ktouls) Thanks so much for bringing me support
+- [zaoqi123](https://github.com/zaoqi123) It's not a bad idea to buy me a milk tea
 
 
 
