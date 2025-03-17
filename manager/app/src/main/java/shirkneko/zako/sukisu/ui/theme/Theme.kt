@@ -42,17 +42,19 @@ private fun getDarkColorScheme() = darkColorScheme(
     primary = ThemeConfig.currentTheme.Primary,
     onPrimary = ThemeConfig.currentTheme.OnPrimary,
     primaryContainer = ThemeConfig.currentTheme.PrimaryContainer,
-    onPrimaryContainer = ThemeConfig.currentTheme.OnPrimaryContainer,
+    onPrimaryContainer = Color.White,
     secondary = ThemeConfig.currentTheme.Secondary,
     onSecondary = ThemeConfig.currentTheme.OnSecondary,
     secondaryContainer = ThemeConfig.currentTheme.SecondaryContainer,
-    onSecondaryContainer = ThemeConfig.currentTheme.OnSecondaryContainer,
+    onSecondaryContainer = Color.White,
     tertiary = ThemeConfig.currentTheme.Tertiary,
     onTertiary = ThemeConfig.currentTheme.OnTertiary,
     tertiaryContainer = ThemeConfig.currentTheme.TertiaryContainer,
-    onTertiaryContainer = ThemeConfig.currentTheme.OnTertiaryContainer,
+    onTertiaryContainer = Color.White,
     background = Color.Transparent,
-    surface = Color.Transparent
+    surface = Color.Transparent,
+    onBackground = Color.White,
+    onSurface = Color.White
 )
 
 @Composable
@@ -115,7 +117,9 @@ fun KernelSUTheme(
         dynamicColor && Build.VERSION.SDK_INT >= Build.VERSION_CODES.S -> {
             if (darkTheme) dynamicDarkColorScheme(context).copy(
                 background = Color.Transparent,
-                surface = Color.Transparent
+                surface = Color.Transparent,
+                onBackground = Color.White,
+                onSurface = Color.White
             ) else dynamicLightColorScheme(context).copy(
                 background = Color.Transparent,
                 surface = Color.Transparent
@@ -198,7 +202,7 @@ fun KernelSUTheme(
     }
 }
 
-// 扩展函数
+
 fun Context.saveCustomBackground(uri: Uri?) {
     val newUri = uri?.let { copyImageToInternalStorage(it) }
     getSharedPreferences("theme_prefs", Context.MODE_PRIVATE)
@@ -280,6 +284,6 @@ fun Context.saveDynamicColorState(enabled: Boolean) {
 
 fun Context.loadDynamicColorState() {
     val enabled = getSharedPreferences("theme_prefs", Context.MODE_PRIVATE)
-        .getBoolean("use_dynamic_color", false)
+        .getBoolean("use_dynamic_color", true)
     ThemeConfig.useDynamicColor = enabled
 }

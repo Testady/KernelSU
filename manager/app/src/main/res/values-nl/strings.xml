@@ -72,11 +72,10 @@
     <string name="module_downloading">Downloaden van module: %s</string>
     <string name="new_version_available">Nieuwe versie %s is beschikbaar,klik om te upgraden.</string>
     <string name="launch_app">Start</string>
-    <string name="force_stop_app">Forceer stop</string>
+    <string name="force_stop_app" formatted="false">Forceer stop</string>
     <string name="restart_app">Herstart</string>
     <string name="module_start_downloading">Begin met downloaden: %s</string>
     <string name="failed_to_update_sepolicy">Kan SELinux-regels niet bijwerken voor: %s</string>
-    <string name="require_kernel_version">De huidige KernelSU-versie %d is te laag voor de manager om goed te werken. Upgrade naar versie %d of hoger!</string>
     <string name="module_changelog">wijzigings logboek</string>
     <string name="settings_profile_template">App-profiel Sjabloon</string>
     <string name="app_profile_template_create">Maken sjabloon</string>

@@ -69,7 +69,7 @@
     <string name="module_update">アップデート</string>
     <string name="module_start_downloading">ダウンロードを開始: %s</string>
     <string name="launch_app">起動</string>
-    <string name="force_stop_app">強制停止</string>
+    <string name="force_stop_app" formatted="false">強制停止</string>
     <string name="restart_app">再起動</string>
     <string name="failed_to_update_sepolicy">SELinux ルールの更新に失敗しました %s</string>
     <string name="profile_capabilities">ケーパビリティ</string>
@@ -77,7 +77,6 @@
     <string name="profile_umount_modules_summary">このオプションを有効にすると、KernelSU はこのアプリのモジュールによって変更されたファイルを復元できるようになります。</string>
     <string name="settings_umount_modules_default">既定でモジュールのマウントを解除</string>
     <string name="settings_umount_modules_default_summary">アプリプロファイルの「モジュールのアンマウント」の共通のデフォルト値です。 有効にすると、プロファイルセットを持たないアプリのシステムに対するすべてのモジュールの変更が削除されます。</string>
-    <string name="require_kernel_version">現在の KernelSU バージョン %d はマネージャーが適切に機能するには低すぎます。 バージョン %d 以降にアップグレードしてください！</string>
     <string name="module_changelog">変更履歴</string>
     <string name="app_profile_template_import_success">インポート成功</string>
     <string name="app_profile_export_to_clipboard">クリップボードからエクスポート</string>

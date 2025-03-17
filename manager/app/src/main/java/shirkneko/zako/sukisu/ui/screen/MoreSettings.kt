@@ -22,6 +22,7 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
+import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.Slider
 import androidx.compose.material3.SliderDefaults
@@ -122,14 +123,14 @@ fun MoreSettingsScreen(navigator: DestinationsNavigator) {
 
     // 主题色选项
     val themeColorOptions = listOf(
-        "黄色" to ThemeColors.Default,
-        "蓝色" to ThemeColors.Blue,
-        "绿色" to ThemeColors.Green,
-        "紫色" to ThemeColors.Purple,
-        "橙色" to ThemeColors.Orange,
-        "粉色" to ThemeColors.Pink,
-        "高级灰" to ThemeColors.Gray,
-        "象牙白" to ThemeColors.Ivory
+        stringResource(R.string.color_default) to ThemeColors.Default,
+        stringResource(R.string.color_blue) to ThemeColors.Blue,
+        stringResource(R.string.color_green) to ThemeColors.Green,
+        stringResource(R.string.color_purple) to ThemeColors.Purple,
+        stringResource(R.string.color_orange) to ThemeColors.Orange,
+        stringResource(R.string.color_pink) to ThemeColors.Pink,
+        stringResource(R.string.color_gray) to ThemeColors.Gray,
+        stringResource(R.string.color_ivory) to ThemeColors.Ivory
     )
 
     var showThemeColorDialog by remember { mutableStateOf(false) }
@@ -236,8 +237,8 @@ fun MoreSettingsScreen(navigator: DestinationsNavigator) {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
                 SwitchItem(
                     icon = Icons.Filled.ColorLens,
-                    title = "动态颜色",
-                    summary = "使用系统主题的动态颜色",
+                    title = stringResource(R.string.dynamic_color_title),
+                    summary = stringResource(R.string.dynamic_color_summary),
                     checked = useDynamicColor
                 ) { enabled ->
                     useDynamicColor = enabled
@@ -251,15 +252,15 @@ fun MoreSettingsScreen(navigator: DestinationsNavigator) {
                     headlineContent = { Text("主题颜色") },
                     supportingContent = {
                         val currentThemeName = when (ThemeConfig.currentTheme) {
-                            is ThemeColors.Default -> "黄色"
-                            is ThemeColors.Blue -> "蓝色"
-                            is ThemeColors.Green -> "绿色"
-                            is ThemeColors.Purple -> "紫色"
-                            is ThemeColors.Orange -> "橙色"
-                            is ThemeColors.Pink -> "粉色"
-                            is ThemeColors.Gray -> "高级灰"
-                            is ThemeColors.Ivory -> "象牙白"
-                            else -> "默认"
+                            is ThemeColors.Default -> stringResource(R.string.color_default)
+                            is ThemeColors.Blue -> stringResource(R.string.color_blue)
+                            is ThemeColors.Green -> stringResource(R.string.color_green)
+                            is ThemeColors.Purple -> stringResource(R.string.color_purple)
+                            is ThemeColors.Orange -> stringResource(R.string.color_orange)
+                            is ThemeColors.Pink -> stringResource(R.string.color_pink)
+                            is ThemeColors.Gray -> stringResource(R.string.color_gray)
+                            is ThemeColors.Ivory -> stringResource(R.string.color_ivory)
+                            else -> stringResource(R.string.color_default)
                         }
                         Text(currentThemeName)
                     },
@@ -269,7 +270,7 @@ fun MoreSettingsScreen(navigator: DestinationsNavigator) {
                 if (showThemeColorDialog) {
                     AlertDialog(
                         onDismissRequest = { showThemeColorDialog = false },
-                        title = { Text("选择主题色") },
+                        title = { Text(stringResource(R.string.choose_theme_color)) },
                         text = {
                             Column {
                                 themeColorOptions.forEach { (name, theme) ->
@@ -428,19 +429,42 @@ fun MoreSettingsScreen(navigator: DestinationsNavigator) {
 @Composable
 private fun getSliderColors(cardAlpha: Float, useCustomColors: Boolean = false): SliderColors {
     val theme = ThemeConfig.currentTheme
-    return if (useCustomColors) {
-        // 使用自定义的主题色设置滑条颜色
-        SliderDefaults.colors(
-            activeTrackColor = theme.getCustomSliderActiveColor(),
-            inactiveTrackColor = theme.getCustomSliderInactiveColor(),
-            thumbColor = theme.getCustomSliderActiveColor()
-        )
-    } else {
-        // 使用原有的动态颜色设置
-        val activeColor = Color.Magenta.copy(alpha = cardAlpha)
-        SliderDefaults.colors(
-            activeTrackColor = activeColor,
-            inactiveTrackColor = Color.Gray.copy(alpha = 0.3f)
-        )
+    val isDarkTheme = ThemeConfig.forceDarkMode ?: isSystemInDarkTheme()
+    val useDynamicColor = ThemeConfig.useDynamicColor
+
+    return when {
+        // 使用动态颜色时
+        useDynamicColor && Build.VERSION.SDK_INT >= Build.VERSION_CODES.S -> {
+            SliderDefaults.colors(
+                activeTrackColor = MaterialTheme.colorScheme.primary.copy(alpha = 0.8f),
+                inactiveTrackColor = MaterialTheme.colorScheme.primary.copy(alpha = 0.3f),
+                thumbColor = MaterialTheme.colorScheme.primary
+            )
+        }
+        // 使用自定义主题色时
+        useCustomColors -> {
+            SliderDefaults.colors(
+                activeTrackColor = theme.getCustomSliderActiveColor(),
+                inactiveTrackColor = theme.getCustomSliderInactiveColor(),
+                thumbColor = theme.Primary
+            )
+        }
+        else -> {
+            val activeColor = if (isDarkTheme) {
+                theme.Primary.copy(alpha = cardAlpha)
+            } else {
+                theme.Primary.copy(alpha = cardAlpha)
+            }
+            val inactiveColor = if (isDarkTheme) {
+                Color.DarkGray.copy(alpha = 0.3f)
+            } else {
+                Color.LightGray.copy(alpha = 0.3f)
+            }
+            SliderDefaults.colors(
+                activeTrackColor = activeColor,
+                inactiveTrackColor = inactiveColor,
+                thumbColor = activeColor
+            )
+        }
     }
 }

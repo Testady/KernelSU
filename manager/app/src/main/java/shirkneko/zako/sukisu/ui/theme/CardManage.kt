@@ -12,9 +12,9 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.material3.CardDefaults
 
 object CardConfig {
-    val defaultElevation: Dp = 4.dp  // 默认阴影值
+    val defaultElevation: Dp = 2.dp
 
-    var cardAlpha by mutableStateOf(1f) // 默认100%透明度
+    var cardAlpha by mutableStateOf(1f)
     var cardElevation by mutableStateOf(defaultElevation)
 
     fun save(context: Context) {
@@ -28,7 +28,7 @@ object CardConfig {
 
     fun load(context: Context) {
         val prefs = context.getSharedPreferences("settings", Context.MODE_PRIVATE)
-        cardAlpha = prefs.getFloat("card_alpha", 1f) // 默认1f
+        cardAlpha = prefs.getFloat("card_alpha", 1f)
         cardElevation = if (prefs.getBoolean("custom_background_enabled", false)) 0.dp else defaultElevation
     }
 }

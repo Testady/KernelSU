@@ -70,7 +70,7 @@
     <string name="profile_selinux_context">SELinux</string>
     <string name="profile_umount_modules">卸载模块</string>
     <string name="failed_to_update_app_profile">为 %s 更新 App Profile 失败</string>
-    <string name="require_kernel_version">当前 KernelSU 版本 %d 过低，管理器无法正常工作，请将内核 KernelSU 版本升级至 %d 或以上！</string>
+    <string name="require_kernel_version" formatted="false">当前 KernelSU 版本 %d 过低，管理器无法正常工作，请将内核 KernelSU 版本升级至 %d 或以上！</string>
     <string name="settings_umount_modules_default">默认卸载模块</string>
     <string name="settings_umount_modules_default_summary">App Profile 中“卸载模块”的全局默认值，如果启用，将会为没有设置 Profile 的应用移除所有模块针对系统的修改。</string>
     <string name="settings_susfs_toggle">隐藏 Kprobe 钩子</string>
@@ -83,7 +83,7 @@
     <string name="module_start_downloading">开始下载：%s</string>
     <string name="new_version_available">发现新版本：%s，点击升级。</string>
     <string name="launch_app">启动</string>
-    <string name="force_stop_app">强制停止</string>
+    <string name="force_stop_app" formatted="false">强制停止</string>
     <string name="restart_app">重新启动</string>
     <string name="failed_to_update_sepolicy">为：%s 更新翻译失败</string>
     <string name="module_changelog">更新日志</string>
@@ -192,4 +192,16 @@
     <string name="theme_follow_system">跟随系统</string>
     <string name="theme_light">浅色</string>
     <string name="theme_dark">深色</string>
+    <string name="manual_hook">手动钩子</string>
+    <string name="dynamic_color_title">动态颜色</string>
+    <string name="dynamic_color_summary">使用系统主题的动态颜色</string>
+    <string name="choose_theme_color">选择主题色</string>
+    <string name="color_default">黄色</string>
+    <string name="color_blue">蓝色</string>
+    <string name="color_green">绿色</string>
+    <string name="color_purple">紫色</string>
+    <string name="color_orange">橙色</string>
+    <string name="color_pink">粉色</string>
+    <string name="color_gray">高级灰</string>
+    <string name="color_ivory">象牙白</string>
 </resources>

@@ -81,6 +81,14 @@ curl -LSs "https://raw.githubusercontent.com/ShirkNeko/KernelSU/main/kernel/setu
 - `kernel` 目录下的文件是 [GPL-2.0-only](https://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html)。
 - 除 `kernel` 目录外，所有其他部分均为 [GPL-3.0 或更高版本](https://www.gnu.org/licenses/gpl-3.0.html)。
 
+## 赞助名单
+- [Ktouls](https://github.com/Ktouls)非常感谢给我带来的支持
+
+
+
+
+如何以上名单没有你的名称，我会及时更新，再次感谢大家的支持
+
 ## 贡献
 
 - [KernelSU](https://github.com/tiann/KernelSU)：原始项目

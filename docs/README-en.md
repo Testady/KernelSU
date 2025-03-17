@@ -80,6 +80,14 @@ Note: You only need to fill in the first two kernel versions, such as 5.10, 5.15
 - The file in the “kernel” directory is [GPL-2.0-only](https://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html).
 - All other parts except the “kernel” directory are [GPL-3.0 or later](https://www.gnu.org/licenses/gpl-3.0.html).
 
+## Sponsorship list
+- [Ktouls](https://github.com/Ktouls) Thanks so much for bringing me support!
+
+
+
+
+How the above list does not have your name, I will keep you updated, thanks again for your support!
+
 ## Contributions
 
 - [KernelSU](https://github.com/tiann/KernelSU): original project

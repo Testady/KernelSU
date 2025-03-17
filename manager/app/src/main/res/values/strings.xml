@@ -72,7 +72,7 @@
     <string name="profile_selinux_context">SELinux context</string>
     <string name="profile_umount_modules">Umount modules</string>
     <string name="failed_to_update_app_profile">Failed to update App Profile for %s</string>
-    <string name="require_kernel_version">The current KernelSU version %d is too low for the manager to work properly. Please upgrade to version %d or higher!</string>
+    <string name="require_kernel_version" formatted="false">The current KernelSU version %d is too low for the manager to work properly. Please upgrade to version %d or higher!</string>
     <string name="settings_umount_modules_default">Umount modules by default</string>
     <string name="settings_umount_modules_default_summary">The global default value for \"Umount modules\" in App Profile. If enabled, it will remove all module modifications to the system for apps that don\'t have a profile set.</string>
     <string name="settings_susfs_toggle">Cacher les hooks kprobe</string>
@@ -85,7 +85,7 @@
     <string name="module_start_downloading">Start downloading: %s</string>
     <string name="new_version_available">New version %s is available, click to upgrade.</string>
     <string name="launch_app">Launch</string>
-    <string name="force_stop_app">Force stop</string>
+    <string name="force_stop_app" formatted="false">Force stop</string>
     <string name="restart_app">Restart</string>
     <string name="failed_to_update_sepolicy">Failed to update SELinux rules for %s</string>
     <string name="module_changelog">Changelog</string>
@@ -194,4 +194,16 @@
     <string name="theme_follow_system">follow-up system</string>
     <string name="theme_light">light color</string>
     <string name="theme_dark">dark colored</string>
+    <string name="manual_hook">Manual Hook</string>
+    <string name="dynamic_color_title">Dynamic colours</string>
+    <string name="dynamic_color_summary">Dynamic colours using system themes</string>
+    <string name="choose_theme_color">Choose a theme colour</string>
+    <string name="color_default">yellow</string>
+    <string name="color_blue">blue</string>
+    <string name="color_green">green</string>
+    <string name="color_purple">purple</string>
+    <string name="color_orange">orange</string>
+    <string name="color_pink">pink</string>
+    <string name="color_gray">gray</string>
+    <string name="color_ivory">ivory</string>
 </resources>

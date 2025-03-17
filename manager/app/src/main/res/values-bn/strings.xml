@@ -41,7 +41,7 @@
     <string name="refresh">রিফ্রেশ</string>
     <string name="show_system_apps">শো সিস্টেম অ্যাপস</string>
     <string name="hide_system_apps">হাইড সিস্টেম অ্যাপস</string>
-    <string name="send_log">সেন্ড লগ</string>
+    <string name="send_log" formatted="false">সেন্ড লগ</string>
     <string name="safe_mode">সেইফ মোড</string>
     <string name="reboot_to_apply">রিবুট এপ্লাই</string>
     <string name="module_magisk_conflict">মডিউলগুলি অক্ষম কারণ তারা ম্যাজিস্কের সাথে বিরোধিতা করে!</string>
@@ -61,6 +61,5 @@
     <string name="profile_namespace_global">গ্লোবাল</string>
     <string name="profile_namespace_individual">আলাদাভাবে</string>
     <string name="profile_umount_modules">আনমাউন্ট মোডিউল</string>
-    <string name="require_kernel_version">ম্যানেজার সঠিকভাবে কাজ করার জন্য বর্তমান KernelSU সংস্করণ %d খুবই কম। অনুগ্রহ করে %d বা উচ্চতর সংস্করণে আপগ্রেড করুন!</string>
     <string name="save_log">লগ সংরক্ষণ করুন</string>
 </resources>

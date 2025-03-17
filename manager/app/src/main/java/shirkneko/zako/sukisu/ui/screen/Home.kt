@@ -321,15 +321,15 @@ private fun StatusCard(
                         )
                         Spacer(modifier = Modifier.height(4.dp))
 
-                        val suSFS = getSuSFS() // 假设返回值是 "Supported"、"Not Supported" 或其他
+                        val suSFS = getSuSFS()
                         val translatedStatus = when (suSFS) {
                             "Supported" -> stringResource(R.string.status_supported)
                             "Not Supported" -> stringResource(R.string.status_not_supported)
-                            else -> stringResource(R.string.status_unknown) // 默认值
+                            else -> stringResource(R.string.status_unknown)
                         }
 
                         Text(
-                            text = stringResource(R.string.home_susfs, translatedStatus), // 动态插入翻译后的值
+                            text = stringResource(R.string.home_susfs, translatedStatus),
                             style = MaterialTheme.typography.bodyMedium
                         )
                     }
@@ -510,18 +510,31 @@ private fun InfoCard() {
             if (!isSimpleMode) {
                 Spacer(modifier = Modifier.height(16.dp))
 
-                val isSUS_SU = getSuSFSFeatures() == "CONFIG_KSU_SUSFS_SUS_SU"
                 val suSFS = getSuSFS()
 
                 if (suSFS == "Supported") {
-                    val susSUModeLabel = stringResource(R.string.sus_su_mode)
-                    val susSUModeValue = susfsSUS_SU_Mode()  // 获取 SuS SU 模式的值
-                    val susSUMode = if (isSUS_SU) " $susSUModeLabel $susSUModeValue" else ""
+                    InfoCardItem(
+                        stringResource(R.string.home_susfs_version),
+                        "${getSuSFSVersion()} (${stringResource(R.string.manual_hook)})"
+                    )
+                } else {
+                    val susSUMode = try {
+                        susfsSUS_SU_Mode()
+                    } catch (e: Exception) {
+                        0
+                    }
 
-                    val label = stringResource(R.string.home_susfs_version)  // 获取 label 的值
-                    val content = "${getSuSFSVersion()} (${getSuSFSVariant()})$susSUMode"
+                    if (susSUMode == 2 || susSUMode == 0) {
+                        val isSUS_SU = getSuSFSFeatures() == "CONFIG_KSU_SUSFS_SUS_SU"
+                        val susSUModeLabel = stringResource(R.string.sus_su_mode)
+                        val susSUModeValue = susSUMode.toString()
+                        val susSUModeText = if (isSUS_SU) " $susSUModeLabel $susSUModeValue" else ""
 
-                    InfoCardItem(label, content)
+                        InfoCardItem(
+                            stringResource(R.string.home_susfs_version),
+                            "${getSuSFSVersion()} (${getSuSFSVariant()})$susSUModeText"
+                        )
+                    }
                 }
             }
         }

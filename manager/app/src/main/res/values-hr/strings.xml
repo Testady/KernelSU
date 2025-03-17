@@ -64,7 +64,6 @@
     <string name="profile_groups">Grupe</string>
     <string name="profile_capabilities">Sposobnosti</string>
     <string name="profile_selinux_context">SELinux kontekst</string>
-    <string name="require_kernel_version">Trenutna KernelSU verzija %d je preniska da bi voditelj ispravno radio. Molimo vas da nadogradite na verziju %d ili noviju!</string>
     <string name="settings_umount_modules_default">Umount module po zadanom</string>
     <string name="settings_umount_modules_default_summary">Globalna zadana vrijednost za \"Umount module\" u Profilima Aplikacije. Ako je omogućeno, uklonit će sve izmjene modula na sistemu za aplikacije koje nemaju postavljen Profil.</string>
     <string name="profile_selinux_domain">Domena</string>
@@ -75,7 +74,7 @@
     <string name="module_start_downloading">Započnite sa preuzimanjem: %s</string>
     <string name="new_version_available">Nova verzija: %s je dostupna, kliknite da preuzmete</string>
     <string name="launch_app">Pokrenite</string>
-    <string name="force_stop_app">Prisilno Zaustavite</string>
+    <string name="force_stop_app" formatted="false">Prisilno Zaustavite</string>
     <string name="restart_app">Resetujte</string>
     <string name="save_log">Spremi Zapise</string>
 </resources>

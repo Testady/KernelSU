@@ -7,28 +7,27 @@ import shirkneko.zako.sukisu.R
 
 @Composable
 fun getSELinuxStatus(): String {
-    val shell = Shell.Builder.create()
-        .setFlags(Shell.FLAG_REDIRECT_STDERR)
-        .build("sh")
-
+    val shell = Shell.Builder.create().build("sh")
     val list = ArrayList<String>()
+
     val result = shell.use {
         it.newJob().add("getenforce").to(list, list).exec()
     }
-    val output = result.out.joinToString("\n").trim()
 
-    if (result.isSuccess) {
-        return when (output) {
+    val output = list.joinToString("\n").trim()
+
+    return if (result.isSuccess) {
+        when (output) {
             "Enforcing" -> stringResource(R.string.selinux_status_enforcing)
             "Permissive" -> stringResource(R.string.selinux_status_permissive)
             "Disabled" -> stringResource(R.string.selinux_status_disabled)
             else -> stringResource(R.string.selinux_status_unknown)
         }
-    }
-
-    return if (output.endsWith("Permission denied")) {
-        stringResource(R.string.selinux_status_enforcing)
     } else {
-        stringResource(R.string.selinux_status_unknown)
+        if (output.contains("Permission denied")) {
+            stringResource(R.string.selinux_status_enforcing)
+        } else {
+            stringResource(R.string.selinux_status_unknown)
+        }
     }
 }

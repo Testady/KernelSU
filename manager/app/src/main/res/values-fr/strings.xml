@@ -73,10 +73,9 @@
     <string name="launch_app">Lancer</string>
     <string name="new_version_available">La nouvelle version %s est disponible, appuyez ici pour mettre à jour.</string>
     <string name="module_start_downloading">Début du téléchargement de : %s</string>
-    <string name="force_stop_app">Forcer l\'arrêt</string>
+    <string name="force_stop_app" formatted="false">Forcer l\'arrêt</string>
     <string name="restart_app">Relancer l\'application</string>
     <string name="failed_to_update_sepolicy">Échec de la mise à jour des règles SELinux pour : %s</string>
-    <string name="require_kernel_version">La version actuelle de KernelSU (%d) est trop ancienne pour que le gestionnaire fonctionne correctement. Veuillez passer à la version %d ou à une version supérieure !</string>
     <string name="app_profile_template_import_success">Importation réussie</string>
     <string name="app_profile_export_to_clipboard">Exporter vers le presse-papiers</string>
     <string name="app_profile_template_export_empty">Impossible de trouver un modèle local à exporter !</string>

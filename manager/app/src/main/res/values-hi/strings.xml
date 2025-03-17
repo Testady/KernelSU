@@ -19,7 +19,7 @@
     <string name="profile_namespace_individual">Individual</string>
     <string name="module_failed_to_enable">%s मॉड्यूल चालू करने में विफल</string>
     <string name="force_stop_app">जबर्दस्ती बंद करें</string>
-    <string name="reboot_edl">EDL मोड में रिबूट करें</string>
+    <string name="reboot_edl" formatted="false">EDL मोड में रिबूट करें</string>
     <string name="restart_app">फिर से चालू करें</string>
     <string name="profile_capabilities">क्षमताएं</string>
     <string name="home_superuser_count">सुपरयूजर : %d</string>
@@ -33,7 +33,6 @@
     <string name="profile_default">डिफॉल्ट</string>
     <string name="launch_app">लॉन्च करें</string>
     <string name="safe_mode">सेफ मोड</string>
-    <string name="require_kernel_version">मैनेजर के ठीक से काम करने के लिए वर्तमान KernelSU वर्जन %d बहुत कम है। कृपया वर्जन %d या उच्चतर में अपग्रेड करें!</string>
     <string name="reboot_recovery">रिकवरी में रिबूट करें</string>
     <string name="reboot_userspace">सॉफ्ट रिबूट</string>
     <string name="profile_name">प्रोफाइल का नाम</string>
