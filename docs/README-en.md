@@ -10,7 +10,6 @@ Android device root solution based on [KernelSU](https://github.com/KernelSU/Ker
 >
 > This is an unofficial fork, all rights reserved [@tiann](https://github.com/tiann)
 >
-> This is a project based on personal use of the second change, personal research and development use only
 
 - Fully adapted for non-GKI devices (susfs-dev and unsusfs-patched dev branches only)
 
