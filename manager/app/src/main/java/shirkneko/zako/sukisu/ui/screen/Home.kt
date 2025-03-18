@@ -511,7 +511,6 @@ private fun InfoCard() {
                 Spacer(modifier = Modifier.height(16.dp))
 
                 val suSFS = getSuSFS()
-
                 if (suSFS == "Supported") {
                     InfoCardItem(
                         stringResource(R.string.home_susfs_version),
@@ -533,6 +532,11 @@ private fun InfoCard() {
                         InfoCardItem(
                             stringResource(R.string.home_susfs_version),
                             "${getSuSFSVersion()} (${getSuSFSVariant()})$susSUModeText"
+                        )
+                    } else {
+                        InfoCardItem(
+                            stringResource(R.string.home_susfs_version),
+                            "${getSuSFSVersion()} (${stringResource(R.string.manual_hook)})"
                         )
                     }
                 }
