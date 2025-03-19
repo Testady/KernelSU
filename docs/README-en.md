@@ -82,6 +82,7 @@ Note: You only need to fill in the first two kernel versions, such as 5.10, 5.15
 ## Sponsorship list
 - [Ktouls](https://github.com/Ktouls) Thanks so much for bringing me support
 - [zaoqi123](https://github.com/zaoqi123) It's not a bad idea to buy me a milk tea
+- [wswzgdg](https://github.com/wswzgdg) Many thanks for supporting this project
 
 
 
