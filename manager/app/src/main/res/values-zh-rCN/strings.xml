@@ -204,4 +204,14 @@
     <string name="color_pink">粉色</string>
     <string name="color_gray">高级灰</string>
     <string name="color_ivory">象牙白</string>
+    <string name="flash_option">刷入选项</string>
+    <string name="flash_option_tip">选择要刷入的文件</string>
+    <string name="horizon_kernel">Anykernel3 刷写</string>
+    <string name="root_required">需要 root 权限</string>
+    <string name="copy_failed">文件复制失败</string>
+    <string name="reboot_complete_title">刷写完成</string>
+    <string name="reboot_complete_msg">是否立即重启？</string>
+    <string name="yes">是</string>
+    <string name="no">否</string>
+    <string name="failed_reboot">重启失败</string>
 </resources>
