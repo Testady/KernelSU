@@ -353,7 +353,8 @@ fun ModuleScreen(navigator: DestinationsNavigator) {
                     icon = {
                         Icon(
                             imageVector = Icons.Filled.Add,
-                            contentDescription = moduleInstall
+                            contentDescription = moduleInstall,
+                            tint = buttonTextColor
                         )
                     },
                     text = {

@@ -140,7 +140,7 @@ private fun BottomBar(navController: NavHostController) {
                 },
                 icon = {
                     if (isCurrentDestOnBackStack) {
-                        Icon(destination.iconSelected, stringResource(destination.label), tint = Color.White)
+                        Icon(destination.iconSelected, stringResource(destination.label))
                     } else {
                         Icon(destination.iconNotSelected, stringResource(destination.label))
                     }
