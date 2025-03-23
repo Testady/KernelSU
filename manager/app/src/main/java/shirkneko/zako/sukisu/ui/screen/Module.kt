@@ -111,8 +111,9 @@ import shirkneko.zako.sukisu.ui.viewmodel.ModuleViewModel
 import java.io.BufferedReader
 import java.io.InputStreamReader
 import java.util.zip.ZipInputStream
-import androidx.compose.ui.graphics.Color
 import androidx.compose.material3.FloatingActionButtonDefaults
+import androidx.compose.ui.graphics.Color
+import shirkneko.zako.sukisu.ui.theme.CardConfig
 
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -124,7 +125,6 @@ fun ModuleScreen(navigator: DestinationsNavigator) {
     val snackBarHost = LocalSnackbarHost.current
     val scope = rememberCoroutineScope()
     val confirmDialog = rememberConfirmDialog()
-    val buttonTextColor = androidx.compose.ui.graphics.Color.Black
 
     val selectZipLauncher = rememberLauncherForActivityResult(
         contract = ActivityResultContracts.StartActivityForResult()
@@ -343,6 +343,7 @@ fun ModuleScreen(navigator: DestinationsNavigator) {
         floatingActionButton = {
             if (!hideInstallButton) {
                 val moduleInstall = stringResource(id = R.string.module_install)
+                val cardColor = MaterialTheme.colorScheme.secondaryContainer
                 ExtendedFloatingActionButton(
                     onClick = {
                         selectZipLauncher.launch(
@@ -363,12 +364,8 @@ fun ModuleScreen(navigator: DestinationsNavigator) {
                             text = moduleInstall
                         )
                     },
-                    elevation = FloatingActionButtonDefaults.elevation(
-                        defaultElevation = 0.dp,
-                        pressedElevation = 0.dp,
-                        focusedElevation = 0.dp,
-                        hoveredElevation = 0.dp
-                    )
+                    containerColor = cardColor.copy(alpha = 1f),
+                    contentColor = MaterialTheme.colorScheme.onSecondaryContainer
                 )
             }
         },
