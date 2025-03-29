@@ -581,20 +581,19 @@ private fun getDeviceModel(context: Context): String {
     return try {
         val systemProperties = Class.forName("android.os.SystemProperties")
         val getMethod = systemProperties.getMethod("get", String::class.java, String::class.java)
-        val marketName = context.getSystemService(Context.APP_OPS_SERVICE)?.let { appOps ->
-            getMethod.invoke(null, "ro.product.marketname", "") as String
-        } ?: ""
-
-        if (marketName.isNotEmpty()) {
-            marketName
-        } else {
-            val MarketName = getMethod.invoke(null, "ro.vendor.oplus.market.name", "") as String
-            if (MarketName.isNotEmpty()) {
-                MarketName
-            } else {
-                Build.DEVICE
+        val marketNameKeys = listOf(
+            "ro.product.marketname",          // Xiaomi
+            "ro.vendor.oplus.market.name",    // Oppo, OnePlus, Realme
+            "ro.vivo.market.name",            // Vivo
+            "ro.config.marketing_name"        // Huawei
+        )
+        for (key in marketNameKeys) {
+            val marketName = getMethod.invoke(null, key, "") as String
+            if (marketName.isNotEmpty()) {
+                return marketName
             }
         }
+        Build.DEVICE
     } catch (e: Exception) {
         Build.DEVICE
     }
