@@ -1,5 +1,6 @@
 package shirkneko.zako.sukisu.ui.screen
 
+import androidx.compose.animation.AnimatedVisibility
 import android.content.Context
 import android.net.Uri
 import android.os.Build
@@ -23,6 +24,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.isSystemInDarkTheme
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.Slider
 import androidx.compose.material3.SliderDefaults
@@ -131,7 +133,7 @@ fun MoreSettingsScreen(navigator: DestinationsNavigator) {
     val systemIsDark = isSystemInDarkTheme()
     LaunchedEffect(Unit) {
         CardConfig.apply {
-            cardAlpha = prefs.getFloat("card_alpha", 0.65f)
+            cardAlpha = prefs.getFloat("card_alpha", 0.45f)
             cardElevation = if (prefs.getBoolean("custom_background_enabled", false)) 0.dp else defaultElevation
             isCustomAlphaSet = prefs.getBoolean("is_custom_alpha_set", false)
 
@@ -139,7 +141,7 @@ fun MoreSettingsScreen(navigator: DestinationsNavigator) {
             if (!isCustomAlphaSet) {
                 val isDarkMode = ThemeConfig.forceDarkMode ?: systemIsDark
                 if (isDarkMode) {
-                    cardAlpha = 0.5f
+                    cardAlpha = 0.35f
                 }
             }
         }
@@ -219,8 +221,10 @@ fun MoreSettingsScreen(navigator: DestinationsNavigator) {
                     isExpanded = !isExpanded
                 }
             )
-
-            if (isExpanded) {
+            AnimatedVisibility(
+                visible = isExpanded,
+                modifier = Modifier.fillMaxWidth().padding(horizontal = 24.dp)
+            ) {
                 // 添加简洁模块开关
                 SwitchItem(
                     icon = Icons.Filled.Brush,
@@ -230,7 +234,11 @@ fun MoreSettingsScreen(navigator: DestinationsNavigator) {
                 ) {
                     onSimpleModeChange(it)
                 }
-
+            }
+            AnimatedVisibility(
+                visible = isExpanded,
+                modifier = Modifier.fillMaxWidth().padding(horizontal = 24.dp)
+            ) {
                 // 隐藏内核部分版本号
                 SwitchItem(
                     icon = Icons.Filled.VisibilityOff,
@@ -385,10 +393,10 @@ fun MoreSettingsScreen(navigator: DestinationsNavigator) {
                                 context.saveCustomBackground(null)
                                 isCustomBackgroundEnabled = false
                                 CardConfig.cardElevation = CardConfig.defaultElevation
-                                CardConfig.cardAlpha = 1f
+                                CardConfig.cardAlpha = 0.45f
                                 CardConfig.isCustomAlphaSet = false
                                 saveCardConfig(context)
-                                cardAlpha = 0.65f
+                                cardAlpha = 0.35f
                                 themeMode = 0
                                 context.saveThemeMode(null)
                                 CardConfig.isUserDarkModeEnabled = false
@@ -399,39 +407,45 @@ fun MoreSettingsScreen(navigator: DestinationsNavigator) {
                     )
                 }
             )
-
-            if (ThemeConfig.customBackgroundUri != null && showCardSettings) {
                 // 透明度 Slider
-                ListItem(
-                    leadingContent = { Icon(Icons.Filled.Opacity, null) },
-                    headlineContent = { Text(stringResource(R.string.settings_card_alpha)) },
-                    supportingContent = {
-                        Slider(
-                            value = cardAlpha,
-                            onValueChange = { newValue ->
-                                cardAlpha = newValue
-                                CardConfig.cardAlpha = newValue
-                                CardConfig.isCustomAlphaSet = true
-                                prefs.edit { putBoolean("is_custom_alpha_set", true) }
-                                prefs.edit { putFloat("card_alpha", newValue) }
-                            },
-                            onValueChangeFinished = {
-                                CoroutineScope(Dispatchers.IO).launch {
-                                    saveCardConfig(context)
+                AnimatedVisibility(
+                    visible = ThemeConfig.customBackgroundUri != null && showCardSettings,
+                    modifier = Modifier.fillMaxWidth().padding(horizontal = 24.dp)
+                ) {
+                    ListItem(
+                        leadingContent = { Icon(Icons.Filled.Opacity, null) },
+                        headlineContent = { Text(stringResource(R.string.settings_card_alpha)) },
+                        supportingContent = {
+                            Slider(
+                                value = cardAlpha,
+                                onValueChange = { newValue ->
+                                    cardAlpha = newValue
+                                    CardConfig.cardAlpha = newValue
+                                    CardConfig.isCustomAlphaSet = true
+                                    prefs.edit { putBoolean("is_custom_alpha_set", true) }
+                                    prefs.edit { putFloat("card_alpha", newValue) }
+                                },
+                                onValueChangeFinished = {
+                                    CoroutineScope(Dispatchers.IO).launch {
+                                        saveCardConfig(context)
+                                    }
+                                },
+                                valueRange = 0f..1f,
+                                colors = getSliderColors(cardAlpha, useCustomColors = true),
+                                thumb = {
+                                    SliderDefaults.Thumb(
+                                        interactionSource = remember { MutableInteractionSource() },
+                                        thumbSize = DpSize(0.dp, 0.dp)
+                                    )
                                 }
-                            },
-                            valueRange = 0f..1f,
-                            colors = getSliderColors(cardAlpha, useCustomColors = true),
-                            thumb = {
-                                SliderDefaults.Thumb(
-                                    interactionSource = remember { MutableInteractionSource() },
-                                    thumbSize = DpSize(0.dp, 0.dp)
-                                )
-                            }
-                        )
-                    }
-                )
-
+                            )
+                        }
+                    )
+                }
+                AnimatedVisibility(
+                    visible = ThemeConfig.customBackgroundUri != null && showCardSettings,
+                    modifier = Modifier.fillMaxWidth().padding(horizontal = 24.dp)
+                ){
                 ListItem(
                     leadingContent = { Icon(Icons.Filled.DarkMode, null) },
                     headlineContent = { Text(stringResource(R.string.theme_mode)) },
@@ -440,7 +454,7 @@ fun MoreSettingsScreen(navigator: DestinationsNavigator) {
                         showThemeModeDialog = true
                     }
                 )
-
+                }
 
                     // 主题模式选择对话框
                     if (showThemeModeDialog) {
@@ -503,7 +517,7 @@ fun MoreSettingsScreen(navigator: DestinationsNavigator) {
                 }
             }
         }
-    }
+
 
 @Composable
 private fun getSliderColors(cardAlpha: Float, useCustomColors: Boolean = false): SliderColors {
